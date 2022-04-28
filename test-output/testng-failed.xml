@@ -8,11 +8,6 @@
           <include name="testProductPage"/>
         </methods>
       </class> <!-- com.xcart.testcases.ProductPageTest -->
-      <class name="com.xcart.testcases.HomePageTest">
-        <methods>
-          <include name="testHomePage"/>
-        </methods>
-      </class> <!-- com.xcart.testcases.HomePageTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

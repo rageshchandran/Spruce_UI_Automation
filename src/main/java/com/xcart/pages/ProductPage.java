@@ -37,19 +37,7 @@ public class ProductPage extends TestBase {
 
 		txt.writeToFile("ProductTitle: "+obj.getProductTitle());
 		txt.writeToFile("Product Price: "+obj.getProductPrice());
-		if(obj.getProductTitle().equalsIgnoreCase("Gunnar Vayper Gaming Glasses")) {
-			List<String> arr = new ArrayList<String>();
-			List<WebElement> getGlassesdecs = driver.findElements(By.xpath(prop.getProperty("getGlassesdecs")));
-			for (WebElement ele : getGlassesdecs) {
-				arr.add(ele.getText());
-
-			}
-			String gdescription = arr.toString();
-			txt.writeToFile("Product description: "+gdescription);
-		}else {
-			txt.writeToFile("Product description: "+obj.getProductDescription());
-		}
-		
+		txt.writeToFile("Product description: "+obj.getProductDescription());
 		txt.writeToFile("Product url: " +obj.getProductUrl());
 		txt.writeToFile("\n************************************************************************************************************************************************\n");
 
@@ -60,10 +48,22 @@ public class ProductPage extends TestBase {
 		product.setProductTitle(driver.findElement(By.cssSelector(prop.getProperty("productTitle"))).getText());
 		product.setProductPrice(driver.findElement(By.cssSelector(prop.getProperty("productPrice"))).getText());
 		List<String> arrPara = new ArrayList<String>();
-		List<WebElement> allDescription = driver.findElements(By.xpath(prop.getProperty("productDesc")));
-		// loop through all paragraph elements
-		for (WebElement ele : allDescription) {
-			arrPara.add(ele.getText());
+		
+		if(driver.findElements(By.xpath(prop.getProperty("productDesc"))).size()>0) {
+			List<WebElement> allDescription = driver.findElements(By.xpath(prop.getProperty("productDesc")));
+			// loop through all paragraph elements
+			for (WebElement ele : allDescription) {
+				arrPara.add(ele.getText());
+
+			}
+			
+		} else {
+			System.out.println("Inside else");
+			List<WebElement> getGlassesdecs = driver.findElements(By.xpath(prop.getProperty("getGlassesdecs")));
+			for (WebElement ele : getGlassesdecs) {
+				System.out.println("Each Web Element" + arrPara.toString());
+				arrPara.add(ele.getText());
+			}
 
 		}
 		product.setProductDescription(arrPara.toString());
