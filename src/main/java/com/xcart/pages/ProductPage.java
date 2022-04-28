@@ -1,6 +1,5 @@
 package com.xcart.pages;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +18,7 @@ public class ProductPage extends TestBase {
 	public void getProductResult() throws Exception {
 		
 		//getting the total number of product in the result page
-		String strResult = driver.findElement(By.xpath("//*[@class='head-h2 ']")).getText();
+		String strResult = driver.findElement(By.xpath(prop.getProperty("productResultHeader"))).getText();
 		String countOfProduct = strResult.replaceAll("[^0-9]", "");
 		int count = Integer.parseInt(countOfProduct);
 		clickProduct();
@@ -29,6 +28,7 @@ public class ProductPage extends TestBase {
 			Product item = readProductInfo();
 			writeProductInfo(item);
 			goToNextPage();
+			
 
 		}
 	}
@@ -37,7 +37,19 @@ public class ProductPage extends TestBase {
 
 		txt.writeToFile("ProductTitle: "+obj.getProductTitle());
 		txt.writeToFile("Product Price: "+obj.getProductPrice());
-		txt.writeToFile("Product description: "+obj.getProductDescription());
+		if(obj.getProductTitle().equalsIgnoreCase("Gunnar Vayper Gaming Glasses")) {
+			List<String> arr = new ArrayList<String>();
+			List<WebElement> getGlassesdecs = driver.findElements(By.xpath(prop.getProperty("getGlassesdecs")));
+			for (WebElement ele : getGlassesdecs) {
+				arr.add(ele.getText());
+
+			}
+			String gdescription = arr.toString();
+			txt.writeToFile("Product description: "+gdescription);
+		}else {
+			txt.writeToFile("Product description: "+obj.getProductDescription());
+		}
+		
 		txt.writeToFile("Product url: " +obj.getProductUrl());
 		txt.writeToFile("\n************************************************************************************************************************************************\n");
 
@@ -45,10 +57,10 @@ public class ProductPage extends TestBase {
 
 	private Product readProductInfo() {
 		Product product = new Product();
-		product.setProductTitle(driver.findElement(By.cssSelector(".fn.title")).getText());
-		product.setProductPrice(driver.findElement(By.cssSelector("div[class='product-details-info'] span[class='price product-price']")).getText());
+		product.setProductTitle(driver.findElement(By.cssSelector(prop.getProperty("productTitle"))).getText());
+		product.setProductPrice(driver.findElement(By.cssSelector(prop.getProperty("productPrice"))).getText());
 		List<String> arrPara = new ArrayList<String>();
-		List<WebElement> allDescription = driver.findElements(By.xpath("//*[@class='description product-description']//child::p"));
+		List<WebElement> allDescription = driver.findElements(By.xpath(prop.getProperty("productDesc")));
 		// loop through all paragraph elements
 		for (WebElement ele : allDescription) {
 			arrPara.add(ele.getText());
@@ -57,12 +69,13 @@ public class ProductPage extends TestBase {
 		product.setProductDescription(arrPara.toString());
 		product.setProductUrl(driver.getCurrentUrl());
 		return product;
+		
 	}
 
 	public void clickProduct() {
 
-		driver.findElement(By.xpath("(//*[@class='fn url next-previous-assigned'])[1]")).click();
-		WebElement addCart = driver.findElement(By.xpath("//button[@type='submit']//span[contains(text(),'Add to cart')]"));
+		driver.findElement(By.xpath(prop.getProperty("firstProduct"))).click();
+		WebElement addCart = driver.findElement(By.xpath(prop.getProperty("addToCartButton")));
 		fn.isElementDisplayed(addCart);
 
 	}
@@ -70,10 +83,10 @@ public class ProductPage extends TestBase {
 	// to navigate to NextPage
 	public void goToNextPage() {
 
-		List<WebElement> list = driver.findElements(By.xpath("//a[normalize-space()='Next product']"));
+		List<WebElement> list = driver.findElements(By.xpath(prop.getProperty("nextPageLink")));
 		//System.out.println(list.size());
 		if (list.size() > 0) {
-			driver.findElement(By.xpath("//a[normalize-space()='Next product']")).click();
+			driver.findElement(By.xpath(prop.getProperty("nextPageLink"))).click();
 		}
 
 	}

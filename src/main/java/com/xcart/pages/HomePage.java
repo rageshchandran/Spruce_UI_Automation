@@ -9,8 +9,8 @@ public class HomePage extends TestBase {
 	
 	public void searchProduct() {
 		
-		driver.findElement(By.xpath("(//input[@placeholder='Search items...'])[1]")).sendKeys("Product");
-		driver.findElement(By.xpath("(//input[@placeholder='Search items...'])[1]")).sendKeys(Keys.ENTER);
+		driver.findElement(By.xpath(prop.getProperty("searchBox"))).sendKeys(con.getProperty("itemName"));
+		driver.findElement(By.xpath(prop.getProperty("searchBox"))).sendKeys(Keys.ENTER);
 			
 	}
 	
