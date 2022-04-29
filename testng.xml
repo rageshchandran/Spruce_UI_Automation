@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite">
-  <test thread-count="5" name="Test">
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Spruce UI Automation Assessment">
+  <test thread-count="5" name="X-Cart UI Product Validation">
     <classes>
       <class name="com.xcart.base.TestBase"/>
+      <class name="com.xcart.testcases.HomePageTest"/>
+      <class name="com.xcart.testcases.ProductPageTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

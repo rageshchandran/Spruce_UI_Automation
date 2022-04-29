@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Spruce UI Automation Assessment" duration-ms="29555" started-at="2022-04-29T18:55:56Z" finished-at="2022-04-29T18:56:25Z">
+    <groups>
+    </groups>
+    <test name="X-Cart UI Product Validation" duration-ms="29555" started-at="2022-04-29T18:55:56Z" finished-at="2022-04-29T18:56:25Z">
+      <class name="com.xcart.testcases.HomePageTest">
+        <test-method status="PASS" signature="testHomePage()[pri:0, instance:com.xcart.testcases.HomePageTest@21a947fe]" name="testHomePage" duration-ms="951" started-at="2022-04-29T14:55:56Z" finished-at="2022-04-29T14:55:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testHomePage -->
+      </class> <!-- com.xcart.testcases.HomePageTest -->
+      <class name="com.xcart.testcases.ProductPageTest">
+        <test-method status="PASS" signature="testProductPage()[pri:0, instance:com.xcart.testcases.ProductPageTest@5606c0b]" name="testProductPage" duration-ms="28591" started-at="2022-04-29T14:55:57Z" finished-at="2022-04-29T14:56:25Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testProductPage -->
+      </class> <!-- com.xcart.testcases.ProductPageTest -->
+      <class name="com.xcart.base.TestBase">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.xcart.base.TestBase@25359ed8]" name="setUp" is-config="true" duration-ms="4460" started-at="2022-04-29T14:55:51Z" finished-at="2022-04-29T14:55:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.xcart.base.TestBase@25359ed8]" name="tearDown" is-config="true" duration-ms="105" started-at="2022-04-29T14:56:25Z" finished-at="2022-04-29T14:56:26Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.xcart.base.TestBase -->
+    </test> <!-- X-Cart UI Product Validation -->
+  </suite> <!-- Spruce UI Automation Assessment -->
+</testng-results>
