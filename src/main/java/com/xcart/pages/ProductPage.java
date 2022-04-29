@@ -58,10 +58,8 @@ public class ProductPage extends TestBase {
 			}
 			
 		} else {
-			System.out.println("Inside else");
 			List<WebElement> getGlassesdecs = driver.findElements(By.xpath(prop.getProperty("getGlassesdecs")));
 			for (WebElement ele : getGlassesdecs) {
-				System.out.println("Each Web Element" + arrPara.toString());
 				arrPara.add(ele.getText());
 			}
 
